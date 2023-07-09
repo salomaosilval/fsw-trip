@@ -22,7 +22,9 @@ export const TripReservation = ({ trip }: TripReservationProps) => {
           <p className="font-medium text-sm text-primaryDarker">Total: </p>
           <p className="font-medium text-sm text-primaryDarker">R$2500 </p>
         </div>
-        <Button className="mt-3">Reservar agora</Button>
+        <div className=" pb-10 border-b border-l-grayLighter w-full">
+          <Button className="mt-3 w-full">Reservar agora</Button>
+        </div>
       </div>
     </>
   );
