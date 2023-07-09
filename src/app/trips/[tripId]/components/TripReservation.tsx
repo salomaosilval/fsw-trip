@@ -8,7 +8,9 @@ import Button from "@/components/Button";
 import { useForm, Controller } from "react-hook-form";
 
 export interface TripReservationProps {
-  trip: Trip;
+  tripStartDate: Date;
+  tripEndDate: Date;
+  maxGuests: number;
 }
 
 export interface TripReservationForm {
@@ -17,17 +19,20 @@ export interface TripReservationForm {
   endDate: Date | null;
 }
 
-export const TripReservation = ({ trip }: TripReservationProps) => {
+export const TripReservation = ({ maxGuests, tripStartDate, tripEndDate }: TripReservationProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
+    watch,
   } = useForm<TripReservationForm>();
 
   const onSubmit = (data: any) => {
     console.log({ data });
   };
+
+  const startDate = watch("startDate");
 
   return (
     <>
@@ -50,6 +55,7 @@ export const TripReservation = ({ trip }: TripReservationProps) => {
                 selected={field.value}
                 placeholderText="Data de Início"
                 className="w-full"
+                minDate={tripStartDate}
               />
             )}
           />
@@ -70,6 +76,8 @@ export const TripReservation = ({ trip }: TripReservationProps) => {
                 selected={field.value}
                 placeholderText="Data Final"
                 className="w-full"
+                maxDate={tripEndDate}
+                minDate={startDate ?? tripStartDate}
               />
             )}
           />
@@ -81,7 +89,7 @@ export const TripReservation = ({ trip }: TripReservationProps) => {
               message: "O número de hóspedes é obrigatório.",
             },
           })}
-          placeholder={`Número de hóspedes (Máx: ${trip.maxGuests})`}
+          placeholder={`Número de hóspedes (Máx: ${maxGuests})`}
           className="mt-4"
           error={!!errors?.guests}
           errorMessage={errors?.guests?.message}
