@@ -1,5 +1,6 @@
 import { Poppins } from "next/font/google";
 import { NextAuthProvider } from "@/providers/auth";
+import { ToastProvider } from "@/providers/toast";
 
 import { Header } from "../components/Header";
 import { Footer } from "@/components/Footer";
@@ -18,9 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR">
       <body className={poppins.className}>
         <NextAuthProvider>
-          <Header />
-          {children}
-          <Footer />
+          <ToastProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ToastProvider>
         </NextAuthProvider>
       </body>
     </html>
