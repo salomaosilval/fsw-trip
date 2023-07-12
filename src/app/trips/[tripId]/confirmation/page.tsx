@@ -101,7 +101,7 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
             </div>
           </div>
           <h3 className="font-semibold text-lg text-primaryDarker mt-3">Informações sobre o preço</h3>
-          <div className="flex justify-between mt1">
+          <div className="flex justify-between mt-1">
             <p className="text-primaryDarker">Total:</p>
             <p className="font-medium text-primaryDarker">R${totalPrice}</p>
           </div>
