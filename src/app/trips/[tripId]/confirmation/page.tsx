@@ -70,13 +70,13 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
       ),
     });
 
-    console.log(res.status);
-
     if (!res.ok) {
       return toast.error("Ocorreu um erro ao realizar a reserva", { position: "top-right" });
     }
 
     toast.success("Reserva realizada com sucesso!", { position: "top-right" });
+
+    router.replace("/");
   };
 
   const startDate = new Date(searchParams.get("startDate") as string);
