@@ -23,7 +23,7 @@ const generateSearchQuery = (text: string, startDate?: string | null, budget?: s
     AND: [],
   };
 
-  if (startDate !== "undefined") {
+  if (startDate !== "undefined" && budget !== "null") {
     searchQuery = {
       AND: [
         ...searchQuery.AND,
@@ -36,7 +36,7 @@ const generateSearchQuery = (text: string, startDate?: string | null, budget?: s
     };
   }
 
-  if (budget !== "undefined") {
+  if (budget !== "undefined" && budget !== "null") {
     searchQuery = {
       ...searchQuery,
       AND: [
